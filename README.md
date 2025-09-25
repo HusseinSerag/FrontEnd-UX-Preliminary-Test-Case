@@ -4,50 +4,35 @@ This project consists of two main tasks: a practical Vue.js banner component imp
 
 ## Task 1 - Practical Implementation
 
-### Overview
+## Banner Component Case Study Overview
+This project implements a banner component for landing pages. It supports both square and rectangle modes, with optional carousel functionality on mobile for the square mode. The component displays images and a call-to-action (CTA) box with configurable background and text colors, headings, and links.
 
-This task implements a responsive banner component for landing pages using Vue.js. The component supports both square and rectangle modes, with optional carousel functionality on mobile for the square mode. It displays images and call-to-action (CTA) boxes with configurable background colors, text, headings, and links.
+## Project Setup
 
-### Technical Decisions
+### Vite
+I decided to use Vite as the build tool instead of create-vue, the official Vue project scaffolding tool. The reason is that this project is small and straightforward, so the additional files and configurations from create-vue were unnecessary. Vite provides a lightweight and fast development experience, allowing me to focus on implementing the component without extra boilerplate.
 
-#### Build Tool: Vite
-I chose Vite over create-vue for this project due to its lightweight nature and fast development experience. Since this is a focused implementation of a single component, the additional boilerplate from create-vue was unnecessary. Vite provides the minimal setup needed while maintaining excellent development performance.
+### TypeScript
+The project is written in TypeScript because it has become a standard in modern applications. All the necessary types are stored in the types folder and exported wherever needed. This keeps the project organized while remaining simple.
 
-#### TypeScript Integration
-The entire project is written in TypeScript, which has become standard in modern application development. All types are centrally organized in a dedicated types folder and exported where needed, maintaining clean architecture while keeping the project structure simple and maintainable.
+### Carousel
+For the carousel functionality in square mode, I used Swiper.js, a well-tested and documented carousel library. I have previously used it in React projects, so it was familiar and allowed me to avoid reinventing the wheel.
 
-#### Carousel Implementation
-For the carousel functionality in square mode, I integrated Swiper.js, a well-established and thoroughly documented carousel library. This choice was based on proven reliability and extensive documentation, avoiding the need to build custom carousel logic from scratch.
+### CSS
+I used plain CSS because the task is relatively simple. Any reusable styles across components are placed in styles.css, while component-specific styles are defined inside the style tag of the corresponding component. This approach keeps the code organized and easy to maintain.
 
-#### Styling Approach
-I used plain CSS for styling due to the straightforward nature of the requirements. Reusable styles are centralized in `styles.css`, while component-specific styles are contained within their respective component style tags. This approach maintains organization while keeping the codebase lightweight.
+## Thought Process and Decisions
 
-### Component Features
+### Images and Aspect Ratio
+For square mode, it was important that images maintain a 1:1 aspect ratio and do not stretch out of shape. While the requirement mentioned not stretching, it was unclear what behavior was expected if images were scaled beyond their resolution. In real life applications we would obviously set a maximum width and height but for this test case it is not set, but I ensured that images keep a 1:1 aspect ratio regardless of screen size. This may result in pixelation if the image becomes very large, but it meets the described requirement.
 
-#### Square Mode
-- Images maintain strict 1:1 aspect ratio across all screen sizes
-- Prevents image stretching and distortion
-- Optional carousel functionality on mobile with main image and thumbnail navigation
-- CTA box displays as square on desktop, narrow rectangle on mobile for optimal space usage
-- Desktop layout shows 3 boxes per row (mix of CTA and images)
-- Flexible ordering based on the items prop configuration
+For the rectangle mode, the aspect ratio of the image was defined as 3:1, which aligns with typical banner layouts.
 
-#### Rectangle Mode
-- Displays rectangular images on desktop (3:1 aspect ratio) as background images
-- Mobile view shows square images with CTA box positioned below
-- CTA box features semi-transparent white background for text readability
-- Right-aligned CTA positioning on desktop overlay
+### Carousel in Rectangle Mode
+The behavior of a carousel in rectangle mode was not specified in the requirements. It was mentioned in pseudocode but not in the mockups. Also from my understanding in this context, it doesn't make sense, therefore, it is considered undefined behavior to set true when mode is equal to rectangle, and I did not implement a carousel for rectangle mode.
 
-### Design Considerations
-
-#### Image Handling
-For square mode, maintaining the 1:1 aspect ratio was prioritized over preventing potential pixelation at very large sizes. This ensures visual consistency across all viewport sizes while meeting the core requirement of preventing image distortion.
-
-#### Responsive Behavior
-The component adapts seamlessly between desktop and mobile layouts, with particular attention to mobile-first design principles. CTA boxes transform from square to rectangular on mobile to optimize vertical space usage.
-
-#### Undefined Behaviors
-The requirements mentioned carousel functionality for rectangle mode in pseudocode but not in mockups. Since this was considered undefined behavior, carousel functionality was not implemented for rectangle mode, focusing instead on the clearly specified square mode carousel.
+## Conclusion
+This project demonstrates the implementation of a flexible banner component with attention to responsive design, usability, and clarity. All decisions have been documented, including any assumptions made when requirements were ambiguous.
 
 ## Task 2 - UI/UX Mockup
 
