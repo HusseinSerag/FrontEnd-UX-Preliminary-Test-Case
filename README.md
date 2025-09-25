@@ -1,41 +1,102 @@
-# Banner Component Case Study
+# Frontend/UX Preliminary Test Case
 
-Overview
+This project consists of two main tasks: a practical Vue.js banner component implementation and a UI/UX redesign mockup for an e-commerce product page.
 
-This project implements a banner component for landing pages. It supports both square and rectangle modes, with optional carousel functionality on mobile for the square mode. The component displays images and a call-to-action (CTA) box with configurable background and text colors, headings, and links.
+## Task 1 - Practical Implementation
 
-Project Setup
+### Overview
 
-Vite
+This task implements a responsive banner component for landing pages using Vue.js. The component supports both square and rectangle modes, with optional carousel functionality on mobile for the square mode. It displays images and call-to-action (CTA) boxes with configurable background colors, text, headings, and links.
 
-I decided to use Vite as the build tool instead of create-vue, the official Vue project scaffolding tool. The reason is that this project is small and straightforward, so the additional files and configurations from create-vue were unnecessary. Vite provides a lightweight and fast development experience, allowing me to focus on implementing the component without extra boilerplate.
+### Technical Decisions
 
-TypeScript
+#### Build Tool: Vite
+I chose Vite over create-vue for this project due to its lightweight nature and fast development experience. Since this is a focused implementation of a single component, the additional boilerplate from create-vue was unnecessary. Vite provides the minimal setup needed while maintaining excellent development performance.
 
-The project is written in TypeScript because it has become a standard in modern applications. All the necessary types are stored in the types folder and exported wherever needed. This keeps the project organized while remaining simple.
+#### TypeScript Integration
+The entire project is written in TypeScript, which has become standard in modern application development. All types are centrally organized in a dedicated types folder and exported where needed, maintaining clean architecture while keeping the project structure simple and maintainable.
 
-Carousel
+#### Carousel Implementation
+For the carousel functionality in square mode, I integrated Swiper.js, a well-established and thoroughly documented carousel library. This choice was based on proven reliability and extensive documentation, avoiding the need to build custom carousel logic from scratch.
 
-For the carousel functionality in square mode, I used Swiper.js, a well-tested and documented carousel library. I have previously used it in React projects, so it was familiar and allowed me to avoid reinventing the wheel.
+#### Styling Approach
+I used plain CSS for styling due to the straightforward nature of the requirements. Reusable styles are centralized in `styles.css`, while component-specific styles are contained within their respective component style tags. This approach maintains organization while keeping the codebase lightweight.
 
-CSS
+### Component Features
 
-I used plain CSS because the task is relatively simple. Any reusable styles across components are placed in styles.css, while component-specific styles are defined inside the style tag of the corresponding component. This approach keeps the code organized and easy to maintain.
+#### Square Mode
+- Images maintain strict 1:1 aspect ratio across all screen sizes
+- Prevents image stretching and distortion
+- Optional carousel functionality on mobile with main image and thumbnail navigation
+- CTA box displays as square on desktop, narrow rectangle on mobile for optimal space usage
+- Desktop layout shows 3 boxes per row (mix of CTA and images)
+- Flexible ordering based on the items prop configuration
 
-Thought Process and Decisions
+#### Rectangle Mode
+- Displays rectangular images on desktop (3:1 aspect ratio) as background images
+- Mobile view shows square images with CTA box positioned below
+- CTA box features semi-transparent white background for text readability
+- Right-aligned CTA positioning on desktop overlay
 
-Images and Aspect Ratio
+### Design Considerations
 
-For square mode, it was important that images maintain a 1:1 aspect ratio and do not stretch out of shape. While the requirement mentioned not stretching, it was unclear what behavior was expected if images were scaled beyond their resolution. I ensured that images keep a 1:1 aspect ratio regardless of screen size. This may result in pixelation if the image becomes very large, but it meets the described requirement.
+#### Image Handling
+For square mode, maintaining the 1:1 aspect ratio was prioritized over preventing potential pixelation at very large sizes. This ensures visual consistency across all viewport sizes while meeting the core requirement of preventing image distortion.
 
-For the rectangle mode, the aspect ratio of the image was defined as 3:1, which aligns with typical banner layouts.
+#### Responsive Behavior
+The component adapts seamlessly between desktop and mobile layouts, with particular attention to mobile-first design principles. CTA boxes transform from square to rectangular on mobile to optimize vertical space usage.
 
-Carousel in Rectangle Mode
+#### Undefined Behaviors
+The requirements mentioned carousel functionality for rectangle mode in pseudocode but not in mockups. Since this was considered undefined behavior, carousel functionality was not implemented for rectangle mode, focusing instead on the clearly specified square mode carousel.
 
-The behavior of a carousel in rectangle mode was not specified in the requirements. It was mentioned in pseudocode but not in the mockups. Therefore, it is considered undefined behavior, and I did not implement a carousel for rectangle mode.
+## Task 2 - UI/UX Mockup
 
-Conclusion
+### Design Analysis and Approach
 
-This project demonstrates the implementation of a flexible banner component with attention to responsive design, usability, and clarity. All decisions have been documented, including any assumptions made when requirements were ambiguous.
+You can view the complete redesign mockups here: [Figma Design Link](https://www.figma.com/design/zkOILSmHOleglLWgKyUPMw/ux-design-task?node-id=24-201&t=GCzgsw57B0UcbNQ7-1)
 
-Thank you for reviewing this case study.
+I was asked what is the way that I would expect to recieve design deliverables, I expect them to be provided as Figma files for professional collaboration and easier review access.
+
+### Problem Analysis and Solutions
+
+#### Low Add to Cart Conversion Rate
+
+The primary issue identified was insufficient visual prominence of the add to cart functionality. My solution focuses on making this element more compelling through:
+
+- Increased button size and visual weight
+- Enhanced color contrast using brighter, more attention-grabbing colors
+- Addition of shopping cart icon for immediate visual recognition
+- Strategic positioning to capture user attention as the primary page objective
+
+The core goal is building user trust in the product to drive cart additions and eventual purchases.
+
+#### Customer Support Queries About Delivery Time
+
+The current interface lacks clear visual information, users can be lost which forces users to contact support. This indicates poor information architecture and user trust issues. My redesign addresses this by:
+
+- Making delivery time information more prominent with clear a icon
+- Increasing text size and weight for better visibility
+- Repositioning product ratings above the add to cart section
+- Improving overall information hierarchy for enhanced user confidence
+
+#### Design Freshness Without Confusion
+
+The challenge was introducing modern design elements while maintaining familiar user patterns. My approach balances innovation with usability:
+
+- Maintained similar layout structure to preserve user familiarity
+- Introduced modern UI elements including border radius, shadow effects, and improved typography
+- Used the teal green color as a primary color for visual refreshment
+- Created two mobile variations (pink accent and teal green) to demonstrate color flexibility
+- I believe that the secondary color option provides stronger visual refresh, particularly effective on desktop product information sections
+
+### Design Philosophy
+
+The redesign maintains the established user flow while modernizing the visual presentation. The familiar layout ensures users can navigate intuitively, while new design elements create a fresh, engaging experience.
+
+The product information sections received particular attention, transforming from basic text blocks to visually engaging, modern components. This approach demonstrates how the entire product page ecosystem can be enhanced following consistent design patterns.
+
+Both desktop and mobile versions follow this balanced approach, ensuring the redesign feels fresh and contemporary while respecting established user behavior patterns.
+
+### Implementation Notes
+
+The mockup showcases the foundational approach for redesigning the complete product page experience. Additional components can be integrated following the same design principles, creating a cohesive, modern interface that drives conversions while maintaining usability standards.
