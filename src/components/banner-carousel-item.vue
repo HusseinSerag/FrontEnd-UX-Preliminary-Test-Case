@@ -2,9 +2,9 @@
 import type { BannerItem } from '../types';
 import { assignColorsToItems } from '../utils/banner-assign-color';
 import bannerItem from './banner-item.vue';
+import Carousel from './Carousel.vue';
 const props = defineProps<{items: BannerItem[]}>()
 const items = assignColorsToItems(props.items)
-const images = items.filter(item => item.type === 'image');
 const cta = items.filter(item => item.type === 'cta');
 </script>
 
@@ -17,6 +17,7 @@ const cta = items.filter(item => item.type === 'cta');
    </div>
    <div class="mobile-view">
     <banner-item v-for="(item) in cta" :item="item" :key="item.link" />
+    <carousel :items="items.filter(item => item.type === 'image')" />
    </div>
 </template>
 
