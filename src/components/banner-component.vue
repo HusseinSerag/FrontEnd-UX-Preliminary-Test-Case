@@ -44,9 +44,15 @@ const coloredItems = assignColorsToItems(props.items)
 
     <div class="desktop-view relative">
       <banner-item v-if="rectangleImage" :item="rectangleImage" />
-      <div v-if="ctaItem" class="cta-overlay">
-        <banner-item  :item="{...ctaItem,transparent: true}" />
-      </div>
+      <div class="overlay-container ">
+        <div>
+
+        </div>
+        <div></div>
+          <div v-if="ctaItem" class="cta-overlay">
+              <banner-item  :item="{...ctaItem,transparent: true}" />
+            </div>
+        </div>
     </div>
   </div>
 
@@ -55,15 +61,16 @@ const coloredItems = assignColorsToItems(props.items)
 </template>
 
 <style scoped>
-
+.overlay-container {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
 .cta-overlay {
-  position: absolute;
-  top: 50%; 
-  right: 0; 
-  transform: translateY(-50%);
   background-color: rgba(255, 255, 255, 0.5);
   padding: 1rem;
-  
+    width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
