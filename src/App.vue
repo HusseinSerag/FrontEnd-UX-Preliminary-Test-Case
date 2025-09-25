@@ -62,19 +62,27 @@ const rectangleItems : BannerItem[] = [
   flex-direction: column;
   gap: 4rem;
   
+  
 }
 
-
-@media (min-width: 768px) {
+/* Between 400px and 768px */
+@media (min-width: 400px) and (max-width: 767px) {
   .container {
-    padding: 2rem;
+    padding: 4rem; 
   }
 }
 
+/* 768px and up */
+@media (min-width: 768px) {
+  .container {
+    padding: 8rem; 
+  }
+}
 
+/* 1024px and up */
 @media (min-width: 1024px) {
   .container {
-    padding: 4rem;
+    padding: 12rem; 
   }
 }
 </style>
